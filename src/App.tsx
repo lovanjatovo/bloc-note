@@ -11,6 +11,25 @@ type Todo = {
 function App() {
   const [input , setInput] = useState<string>("")
   const [priority , setPriority] = useState("Moyenne")
+  const [todos , setTodos] = useState<Todo>([]);
+
+  function addToDo(){
+    if(input.trim() == ""){
+      return "Vous devez remplir le champ du nouvel note a faire"
+    }
+
+    const newToDo: Todo = {
+      id: Date.now(),
+      text:input.trim(),
+      priority: priority
+    }
+
+    const newToDos = [newToDo , ...todos]
+    setTodos(newToDos)
+    setInput("")
+    setPriority("Moyenne")
+  }
+
   return (
     <>
     <div className="flex justify-center">
@@ -20,18 +39,20 @@ function App() {
       className="input w-full"
       placeholder="Ajouter une tache..."
       value={input}
+      onChange={(e) => setInput(e.target.value)}
       />
       <select 
       name="" 
       id=""
       className="select w-full"
       value={priority}
+      onChange={(e) => setPriority(e.target.value as Priority)}
       >
         <option value="Urgente">Urgente</option>
         <option value="Moyenne">Moyenne</option>
         <option value="Basse">Basse</option>
       </select>
-      <button className="btn btn-primary">
+      <button className="btn btn-primary" onClick={addToDo}>
         Ajouter
       </button>
       </div>
