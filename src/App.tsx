@@ -10,12 +10,12 @@ type Todo = {
 
 function App() {
   const [input , setInput] = useState<string>("")
-  const [priority , setPriority] = useState("Moyenne")
-  const [todos , setTodos] = useState<Todo>([]);
+  const [priority , setPriority] = useState<Priority>("Moyenne")
+  const [todos , setTodos] = useState<Todo[]>([]);
 
   function addToDo(){
-    if(input.trim() == ""){
-      return "Vous devez remplir le champ du nouvel note a faire"
+    if(input.trim() === ""){
+      return;
     }
 
     const newToDo: Todo = {
