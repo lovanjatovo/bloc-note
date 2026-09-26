@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type Priority = "Urgente" | "Moyenne" | "Basse"
 
 type Todo = {
@@ -7,6 +9,8 @@ type Todo = {
 }
 
 function App() {
+  const [input , setInput] = useState<string>("")
+  const [priority , setPriority] = useState("Moyenne")
   return (
     <>
     <div className="flex justify-center">
@@ -15,11 +19,13 @@ function App() {
       <input type="text" 
       className="input w-full"
       placeholder="Ajouter une tache..."
+      value={input}
       />
       <select 
       name="" 
       id=""
       className="select w-full"
+      value={priority}
       >
         <option value="Urgente">Urgente</option>
         <option value="Moyenne">Moyenne</option>
