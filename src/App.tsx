@@ -15,7 +15,7 @@ function App() {
 
   function addToDo(){
     if(input.trim() === ""){
-      return;
+      alert("Veuillez remplir la case de Tache ajouter");
     }
 
     const newToDo: Todo = {
@@ -25,9 +25,9 @@ function App() {
     }
 
     const newToDos = [newToDo , ...todos]
-    setTodos(newToDos)
-    setInput("")
-    setPriority("Moyenne")
+    setTodos(newToDos);
+    setInput("");
+    setPriority("Moyenne");
   }
 
   return (
